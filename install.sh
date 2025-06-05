@@ -37,7 +37,7 @@ if ! grep -q 'export PATH=.*\.local/bin' $SHELL_RC 2>/dev/null; then
 fi
 
 # Initialize the key binding
-$TARGET --init
+$TARGET --config
 
 # Source the rc file to enable the key binding
-echo -e "🎉 damn installed! Try typing any instruction and pressing \033[33mAlt+d\033[0m. in your terminal."
+echo -e "🎉 damn installed! Try to type any instruction and press \033[33mAlt+d\033[0m. in your terminal."
