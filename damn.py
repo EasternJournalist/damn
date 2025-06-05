@@ -149,7 +149,7 @@ bind -x '"\ed":damn_ai_key'
     with open(bashrc, 'a') as f:
         f.write(bind_snippet)
     
-    print("✅ damn is configured in ~/.bashrc.")
+    print("✅ damn configured in ~/.bashrc.")
 
 
 def unbind():
@@ -206,24 +206,34 @@ def main():
         print(f"\033[91mAPI key is not set. Please set the environment variable {API_CONFIGS[API_SERVICE_NAME]['api_key_varname']} for {API_SERVICE_NAME}\033[0m")
         return
 
-    PROMPT_INSTRUCT = \
-    f"You are a Linux command assistant. {f'({linux_distro_name})' if linux_distro_name else ''}"\
-    "Respond to the user's natural language instruction with the exact Linux command in one single line. "\
-    "Your response must contain only the command, with no explanations, comments, or extra text. "\
-    "If required information is missing, use clear placeholders in angle brackets (e.g., <filename> or <directory>). "\
-    "Do not include shell prompts ($) or line breaks. "\
-    "Reply with only the command. "
+    PROMPT_MESSAGES_INSTRUCT = [
+        {
+            "role": "system", 
+            "content": f"You are a Linux command assistant. {f'({linux_distro_name})' if linux_distro_name else ''}"\
+                "Respond to the user's natural language instruction with the exact Linux command in one single line. "\
+                "Your response must contain only the command, with no explanations, comments, or extra text. "\
+                "If required information is missing, use clear placeholders in angle brackets (e.g., <filename> or <directory>). "\
+                "Reply with only the command. "
+        },
+        {"role": "user", "content": "list files"},
+        {"role": "assistant", "content": "ls"},
+    ]
 
-    PROMPT_FIX = \
-    f"You are a Linux command assistant. {f'({linux_distro_name})' if linux_distro_name else ''}"\
-    "The user will input a possibly incorrect or incomplete Linux command. "\
-    "Your task is to correct it and respond with the corrected command in one single line. "\
-    "Do not include any explanations, comments, or additional text. "\
-    "Do not include shell prompts ($) or line breaks. "\
-    "If necessary, use clear placeholders (e.g., <filename> or <directory>). "\
-    "Output only the corrected command. "
+    PROMPT_MESSAGES_FIX = [
+        {
+            "role": "system",
+            "content": f"You are a Linux command assistant. {f'({linux_distro_name})' if linux_distro_name else ''}"\
+                "The user will input a possibly incorrect or incomplete Linux command. "\
+                "Your task is to correct it and respond with the corrected command in one single line. "\
+                "Do not include any explanations, comments, or additional text. "\
+                "If necessary, use clear placeholders (e.g., <filename> or <directory>). "\
+                "Output only the corrected command. "
+        },
+        {"role": "user", "content": "nvidai-smi"},
+        {"role": "assistant", "content": "nvidia-smi"},
+    ]
 
-    system_prompt = PROMPT_INSTRUCT if mode == "instruct" else PROMPT_FIX
+    prompt_messages = PROMPT_MESSAGES_INSTRUCT if mode == "instruct" else PROMPT_MESSAGES_FIX
 
     headers = {
         "Content-Type": "application/json",
@@ -232,7 +242,7 @@ def main():
 
     data = {
         "messages": [
-            {"role": "system", "content": system_prompt},
+            *prompt_messages,
             {"role": "user", "content": user_input}
         ],
         "model": MODEL_ID,

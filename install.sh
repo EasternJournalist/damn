@@ -40,4 +40,4 @@ fi
 $TARGET --config
 
 # Source the rc file to enable the key binding
-echo -e "🎉 damn installed! Try to type any instruction and press \033[33mAlt+d\033[0m. in your terminal."
+echo -e "🎉 damn installed! Try to type any instruction and press \033[33mAlt+d\033[0m in your terminal."
