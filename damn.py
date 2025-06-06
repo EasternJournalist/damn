@@ -251,6 +251,7 @@ def main():
     
     response_text = ""
     with requests.post(API_URL, headers=headers, data=json.dumps(data), stream=True) as resp:
+        resp.encoding = resp.apparent_encoding
         for line in resp.iter_lines(decode_unicode=True):
             if line.startswith("data:"):
                 line = line[5:].strip()
