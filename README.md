@@ -6,11 +6,29 @@
 > **Just press Alt+D —**  
 > **and get the damn command.**
 
+Minimalism for the linux shell.
+
+## What it does
+
+Get the Linux command from a casual instruction.
+
+## How to use
+
+Alt+D.
+
+## I don't get it...
+
+Watch this GIF:
+
 <img width=100% src=https://github.com/user-attachments/assets/a7c9a0a6-1865-4748-9f1e-782965a81075>
 
 ## Install
 
-Run this:
+### Dependencies
+
+None. 
+
+### Run this to install
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/EasternJournalist/damn/refs/heads/master/install.sh -o /tmp/install.sh && bash install.sh && source ~/.bashrc
@@ -18,8 +36,10 @@ curl -fsSL https://raw.githubusercontent.com/EasternJournalist/damn/refs/heads/m
 
 ### Get an API Key
 
-You will need an API key to use the AI models. Choose one of the following APIs and click the link to get an API key:  
-***(Generally, free credits are quite sufficient for using damn daily.)***
+You will need an API key to use the AI models.  
+**If you don't have one, no worry. Gemini and Doubao offer free credits enough for daily damn.**
+
+Choose one of the following APIs and click the link to get an API key:  
 
 | API Service | Default Model | Environment Variable Name |
 | --- | --- | --- |
@@ -35,4 +55,4 @@ echo "export OPENAI_API_KEY=XXXX-XXXX-XXXX" >> ~/.bashrc; source ~/.bashrc
 
 ## Similar to
 - [thefuck](https://github.com/nvbn/thefuck), but with AI.
-- [shell_gpt](https://github.com/TheR1D/shell_gpt), but easier and only for command.
+- [shell_gpt](https://github.com/TheR1D/shell_gpt), but save your tokens for the most practical use.
