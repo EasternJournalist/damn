@@ -8,19 +8,15 @@
 
 Minimalism for the linux shell.
 
+<img width=100% src=https://github.com/user-attachments/assets/a7c9a0a6-1865-4748-9f1e-782965a81075>
+
 ## What it does
 
 Get the Linux command from a casual instruction.
 
 ## How to use
 
-Alt+D.
-
-## I don't get it...
-
-Watch this GIF:
-
-<img width=100% src=https://github.com/user-attachments/assets/a7c9a0a6-1865-4748-9f1e-782965a81075>
+Alt+D
 
 ## Install
 
