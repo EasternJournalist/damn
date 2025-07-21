@@ -27,7 +27,7 @@ None.
 ### Run this to install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/EasternJournalist/damn/refs/heads/master/install.sh -o /tmp/install.sh && bash install.sh && source ~/.bashrc
+curl -fsSL https://raw.githubusercontent.com/EasternJournalist/damn/refs/heads/master/install.sh -o /tmp/install.sh && bash /tmp/install.sh && source ~/.bashrc
 ```
 
 ### Get an API Key
