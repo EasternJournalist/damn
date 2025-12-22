@@ -256,7 +256,8 @@ def main():
             if line.startswith("data:"):
                 line = line[5:].strip()
             else:
-                print(line)
+                if line.strip():   # Not a normal data line. Maybe error.
+                    print(line.strip())
                 continue
 
             if line == "[DONE]":
