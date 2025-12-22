@@ -17,7 +17,7 @@ API_CONFIGS = {
     },
     "Google Gemini": {
         "api_url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-        "model_id": "gemini-2.5-flash-preview-05-20",
+        "model_id": "gemini-3-flash-preview",
         "api_key_name": "GEMINI_API_KEY"
     },
     "ByteDance Doubao": {
@@ -256,6 +256,7 @@ def main():
             if line.startswith("data:"):
                 line = line[5:].strip()
             else:
+                print(line)
                 continue
 
             if line == "[DONE]":
